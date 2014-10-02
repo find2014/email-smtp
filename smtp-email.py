@@ -59,8 +59,11 @@ with open('E:\\1.jpg', 'rb') as f:
            #set cid of html, then can show img in mail body by html refrence to cid:0
            mime.add_header('Content-ID', '<0>')
            mime.add_header('X-Attachment-ID', '0')
+           #read file and attach file context to mime
            mime.set_payload(f.read())
+           #encode by base64 code
            encoders.encode_base64(mime)
+           #attach mime to msg as accessory
            msg.attach(mime)
 
 #add a text email, just in case reciver can't parse html email
